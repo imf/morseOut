@@ -8,6 +8,9 @@
 // give it a name:
 static int LED = 13;
 static int SOUND_OUT = 9;
+static int SPEED = 100;
+static int SHORT = SPEED;
+static int LONG = SPEED * 4;
 
 static char DOT = '.';
 static char DASH = '-';
@@ -15,6 +18,7 @@ static char SPACE = ' ';
 static char EOC = '$';
 static char EOS = '\0';
 static char char_a[4] = {'.','-',EOC,EOS};
+static char char_b[6] = {'-','.','.','.',EOC,EOS};
 static char char_c[6] = {'-','.','-','.',EOC,EOS};
 static char char_d[5] = {'-','.','.',EOC,EOS};
 static char char_e[3] = {'.',EOC,EOS};
@@ -30,7 +34,7 @@ static char char_w[5] = {'.','-','-',EOC,EOS};
 void setup() {                
   // initialize the digital pin as an output.
   pinMode(LED, OUTPUT); 
-  pinMode(SOUNT_OUT, OUTPUT);  
+  pinMode(SOUND_OUT, OUTPUT);  
 }
 
 // the loop routine runs over and over again forever:
@@ -85,19 +89,19 @@ void s() {
 }
 
 void dot() {
-  blink(100, 100);
+  blink(SHORT, SHORT);
 }
 
 void dash() {
-  blink(400,100);
+  blink(LONG,SHORT);
 }
 
 void end_of_character() {
-  delay(500);
+  delay(LONG);
 }
 
 void pause() {
-  delay(2000);
+  delay(LONG * 2);
 }
 
 void banner() {
