@@ -1,20 +1,28 @@
 /*
-  Blink
-  Turns on an LED on for one second, then off for one second, repeatedly.
+  Morse Out
+  Display some morse output on the built-in LED
  
-  This example code is in the public domain.
- */
+*/
  
 // Pin 13 has an LED connected on most Arduino boards.
 // give it a name:
 static int LED = 13;
 static char DOT = '.';
 static char DASH = '-';
+static char SPACE = ' ';
 static char EOC = '$';
-static char char_a[3] = {'.','-',EOC};
-static char char_m[3] = {'-','-',EOC};
-static char char_o[4] = {'-','-','-',EOC};
-static char char_s[4] = {'.','.','.',EOC};
+static char EOS = '\0';
+static char char_a[4] = {'.','-',EOC,EOS};
+static char char_c[6] = {'-','.','-','.',EOC,EOS};
+static char char_d[5] = {'-','.','.',EOC,EOS};
+static char char_e[3] = {'.',EOC,EOS};
+static char char_f[6] = {'.','.','-','.',EOC,EOS};
+static char char_m[4] = {'-','-',EOC,EOS};
+static char char_o[5] = {'-','-','-',EOC,EOS};
+static char char_r[5] = {'.','-','.',EOC,EOS};
+static char char_s[5] = {'.','.','.',EOC,EOS};
+static char char_t[3] = {'-',EOC,EOS};
+static char char_w[5] = {'.','-','-',EOC,EOS};
 
 // the setup routine runs once when you press reset:
 void setup() {                
@@ -29,15 +37,32 @@ void loop() {
   o();
   s();
   pause();
-  show(char_a);
+//  show(char_a);
+//  pause();
+  show(char_m);
+  show(char_o);
+  show(char_r);
+  show(char_s);
+  show(char_e);
+  pause();
+  show(char_c);
+  show(char_o);
+  show(char_d);
+  show(char_e);
+  pause();
+  show(char_f);
+  show(char_t);
+  show(char_w);
+  pause();
 }
 
 void show(char* letter) {
-   for (int i = 0; letter[i] != EOC; i++) {
+   for (int i = 0; letter[i] != EOS; i++) {
      if (letter[i] == DOT) dot();
      else if (letter[i] == DASH) dash();
+     else if (letter[i] == EOC) end_of_character();
+     else if (letter[i] == SPACE) pause();
    }
-   end_of_character();
 }
 
 void o() {
@@ -49,10 +74,11 @@ void o() {
 }
 
 void s() {
-  dot();
-  dot();
-  dot();
-  end_of_character();
+  show(char_s);
+//  dot();
+//  dot();
+//  dot();
+//  end_of_character();
 }
 
 void dot() {
