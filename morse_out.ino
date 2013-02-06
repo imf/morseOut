@@ -43,6 +43,18 @@ static char char_w[5] = {'.','-','-',EOC,EOS};
 static char char_x[6] = {'-','.','.','-',EOC,EOS};
 static char char_y[6] = {'-','.','-','-',EOC,EOS};
 static char char_z[6] = {'-','-','.','.',EOC,EOS};
+
+static char char_0[7] = {'-','-','-','-','-',EOC,EOS};
+static char char_1[7] = {'.','-','-','-','-',EOC,EOS};
+static char char_2[7] = {'.','.','-','-','-',EOC,EOS};
+static char char_3[7] = {'.','.','.','-','-',EOC,EOS};
+static char char_4[7] = {'.','.','.','.','-',EOC,EOS};
+static char char_5[7] = {'.','-','-','-','-',EOC,EOS};
+static char char_6[7] = {'-','.','.','.','.',EOC,EOS};
+static char char_7[7] = {'-','-','.','.','.',EOC,EOS};
+static char char_8[7] = {'-','-','-','.','.',EOC,EOS};
+static char char_9[7] = {'-','-','-','-','.',EOC,EOS};
+
 static char SPACE[3]  = {' ',EOC,EOS};
 static char ILLEGAL_CHARACTER[1]  = {EOS};
 
@@ -75,6 +87,19 @@ static char* letters[26] = {
   char_z,
 };
 
+static char* numbers[10] = {
+  char_0,
+  char_1,
+  char_2,
+  char_3,
+  char_4,
+  char_5,
+  char_6,
+  char_7,
+  char_8,
+  char_9,
+};
+
 // the setup routine runs once when you press reset:
 void setup() {                
   // initialize the digital pin as an output.
@@ -86,6 +111,7 @@ void setup() {
 void loop() {
 //  fast_blink();
 
+  read_string("1234567890  \0");
   read_string("sos morse code ftw \0");
 /*
   s();
@@ -123,6 +149,8 @@ void read_string(char* input) {
 char* get_char(char ch) {
   if (ch >= 'a' && ch <= 'z') {
     return letters[ch - 'a'];
+  } else if (ch >= '0' && ch <= '9') {
+    return numbers[ch - '0'];
   } else if (ch == SPACE_CHAR) {
     return SPACE;
   }
