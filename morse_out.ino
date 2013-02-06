@@ -56,6 +56,7 @@ static char char_8[7] = {'-','-','-','.','.',EOC,EOS};
 static char char_9[7] = {'-','-','-','-','.',EOC,EOS};
 
 static char SPACE[3]  = {' ',EOC,EOS};
+static char PERIOD[8]  = {'.','-','.','-','.','-',EOC,EOS};
 static char ILLEGAL_CHARACTER[1]  = {EOS};
 
 static char* letters[26] = {
@@ -111,8 +112,9 @@ void setup() {
 void loop() {
 //  fast_blink();
 
-  read_string("1234567890  \0");
+  read_string("cqd cqd cqd cqd cqd cqd de mgy de mgy de mgy de mgy de mgy de mgy position 41.44n. 50.24w\0");
   read_string("sos morse code ftw \0");
+  read_string("come at once. we have hit a berg. \0");
 /*
   s();
   o();
