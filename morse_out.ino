@@ -19,98 +19,52 @@ static char DASH = '-';
 static char SPACE_CHAR = ' ';
 static char EOC = '$';
 static char EOS = '\0';
-static char char_a[4] = {
-  '.','-',EOC,EOS};
-static char char_b[6] = {
-  '-','.','.','.',EOC,EOS};
-static char char_c[6] = {
-  '-','.','-','.',EOC,EOS};
-static char char_d[5] = {
-  '-','.','.',EOC,EOS};
-static char char_e[3] = {
-  '.',EOC,EOS};
-static char char_f[6] = {
-  '.','.','-','.',EOC,EOS};
-static char char_g[5] = {
-  '-','-','.',EOC,EOS};
-static char char_h[6] = {
-  '.','.','.','.',EOC,EOS};
-static char char_i[4] = {
-  '.','.',EOC,EOS};
-static char char_j[6] = {
-  '.','-','-','-',EOC,EOS};
-static char char_k[5] = {
-  '-','.','-',EOC,EOS};
-static char char_l[6] = {
-  '.','-','.','.',EOC,EOS};
-static char char_m[4] = {
-  '-','-',EOC,EOS};
-static char char_n[4] = {
-  '-','.',EOC,EOS};
-static char char_o[5] = {
-  '-','-','-',EOC,EOS};
-static char char_p[6] = {
-  '.','-','-','.',EOC,EOS};
-static char char_q[6] = {
-  '-','-','.','-',EOC,EOS};
-static char char_r[5] = {
-  '.','-','.',EOC,EOS};
-static char char_s[5] = {
-  '.','.','.',EOC,EOS};
-static char char_t[3] = {
-  '-',EOC,EOS};
-static char char_u[5] = {
-  '.','.','-',EOC,EOS};
-static char char_v[6] = {
-  '.','.','.','-',EOC,EOS};
-static char char_w[5] = {
-  '.','-','-',EOC,EOS};
-static char char_x[6] = {
-  '-','.','.','-',EOC,EOS};
-static char char_y[6] = {
-  '-','.','-','-',EOC,EOS};
-static char char_z[6] = {
-  '-','-','.','.',EOC,EOS};
+static char char_a[4] = {'.','-',EOC,EOS};
+static char char_b[6] = {'-','.','.','.',EOC,EOS};
+static char char_c[6] = {'-','.','-','.',EOC,EOS};
+static char char_d[5] = {'-','.','.',EOC,EOS};
+static char char_e[3] = {'.',EOC,EOS};
+static char char_f[6] = {'.','.','-','.',EOC,EOS};
+static char char_g[5] = {'-','-','.',EOC,EOS};
+static char char_h[6] = {'.','.','.','.',EOC,EOS};
+static char char_i[4] = {'.','.',EOC,EOS};
+static char char_j[6] = {'.','-','-','-',EOC,EOS};
+static char char_k[5] = {'-','.','-',EOC,EOS};
+static char char_l[6] = {'.','-','.','.',EOC,EOS};
+static char char_m[4] = {'-','-',EOC,EOS};
+static char char_n[4] = {'-','.',EOC,EOS};
+static char char_o[5] = {'-','-','-',EOC,EOS};
+static char char_p[6] = {'.','-','-','.',EOC,EOS};
+static char char_q[6] = {'-','-','.','-',EOC,EOS};
+static char char_r[5] = {'.','-','.',EOC,EOS};
+static char char_s[5] = {'.','.','.',EOC,EOS};
+static char char_t[3] = {'-',EOC,EOS};
+static char char_u[5] = {'.','.','-',EOC,EOS};
+static char char_v[6] = {'.','.','.','-',EOC,EOS};
+static char char_w[5] = {'.','-','-',EOC,EOS};
+static char char_x[6] = {'-','.','.','-',EOC,EOS};
+static char char_y[6] = {'-','.','-','-',EOC,EOS};
+static char char_z[6] = {'-','-','.','.',EOC,EOS};
 
-static char char_0[7] = {
-  '-','-','-','-','-',EOC,EOS};
-static char char_1[7] = {
-  '.','-','-','-','-',EOC,EOS};
-static char char_2[7] = {
-  '.','.','-','-','-',EOC,EOS};
-static char char_3[7] = {
-  '.','.','.','-','-',EOC,EOS};
-static char char_4[7] = {
-  '.','.','.','.','-',EOC,EOS};
-static char char_5[7] = {
-  '.','-','-','-','-',EOC,EOS};
-static char char_6[7] = {
-  '-','.','.','.','.',EOC,EOS};
-static char char_7[7] = {
-  '-','-','.','.','.',EOC,EOS};
-static char char_8[7] = {
-  '-','-','-','.','.',EOC,EOS};
-static char char_9[7] = {
-  '-','-','-','-','.',EOC,EOS};
-
-static char SPACE[3]  = {
-  ' ',EOC,EOS};
-static char PERIOD[8]  = {
-  '.','-','.','-','.','-',EOC,EOS};
-static char QUESTION_MARK[8] = {
-  '-','-','.','.','-','-',EOC,EOS};
-static char EXCLAMATION_POINT[7] = {
-  '.','.','-','-','.',EOC,EOS};
-static char COLON[8] = {
-  '-','-','-','.','.','.',EOC,EOS};
-static char SINGLE_QUOTE[8] = {
-  '.','-','-','-','-','.',EOC,EOS};
-static char DOUBLE_QUOTE[8] = {
-  '.','-','.','.','-','.',EOC,EOS};
-static char EQUALS_SIGN[7] = {
-  '-','.','.','.','-',EOC,EOS};
-static char ILLEGAL_CHARACTER[1]  = {
-  EOS};
+static char char_0[7] = {'-','-','-','-','-',EOC,EOS};
+static char char_1[7] = {'.','-','-','-','-',EOC,EOS};
+static char char_2[7] = {'.','.','-','-','-',EOC,EOS};
+static char char_3[7] = {'.','.','.','-','-',EOC,EOS};
+static char char_4[7] = {'.','.','.','.','-',EOC,EOS};
+static char char_5[7] = {'.','-','-','-','-',EOC,EOS};
+static char char_6[7] = {'-','.','.','.','.',EOC,EOS};
+static char char_7[7] = {'-','-','.','.','.',EOC,EOS};
+static char char_8[7] = {'-','-','-','.','.',EOC,EOS};
+static char char_9[7] = {'-','-','-','-','.',EOC,EOS};
+static char SPACE[3]             = {' ',EOC,EOS};
+static char PERIOD[8]            = {'.','-','.','-','.','-',EOC,EOS};
+static char QUESTION_MARK[8]     = {'-','-','.','.','-','-',EOC,EOS};
+static char EXCLAMATION_POINT[7] = {'.','.','-','-','.',EOC,EOS};
+static char COLON[8]             = {'-','-','-','.','.','.',EOC,EOS};
+static char SINGLE_QUOTE[8]      = {'.','-','-','-','-','.',EOC,EOS};
+static char DOUBLE_QUOTE[8]      = {'.','-','.','.','-','.',EOC,EOS};
+static char EQUALS_SIGN[7]       = {'-','.','.','.','-',EOC,EOS};
+static char ILLEGAL_CHARACTER[1] = {EOS};
 
 static char* letters[26] = {
   char_a,
@@ -183,10 +137,6 @@ char* get_char(char ch) {
    } else if (ch >= '0' && ch <= '9') {
      return numbers[ch - '0'];
    } else  switch (ch) {
-//    case ('a'-'z'):
-//      return letters[ch - 'a'];
-//    case ('0'-'9'):
-//      return numbers[ch - '0'];
     case '.':
       return PERIOD;
     case ' ':
