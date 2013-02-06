@@ -8,9 +8,11 @@
 // give it a name:
 static int LED = 13;
 static int SOUND_OUT = 9;
-static int SPEED = 75;
+static int SPEED = 75; // in milliseconds
 static int SHORT = SPEED;
-static int LONG = SPEED * 4;
+static int LONG = SPEED * 3;
+static int LETTER_SPACE = SPEED * 3;
+static int WORD_SPACE = SPEED * 7;
 
 static char DOT = '.';
 static char DASH = '-';
@@ -111,33 +113,9 @@ void setup() {
 // the loop routine runs over and over again forever:
 void loop() {
 //  fast_blink();
-
-  read_string("cqd cqd cqd cqd cqd cqd de mgy de mgy de mgy de mgy de mgy de mgy position 41.44n. 50.24w\0");
   read_string("sos morse code ftw \0");
+  read_string("cqd cqd cqd cqd cqd cqd de mgy de mgy de mgy de mgy de mgy de mgy position 41.44n. 50.24w\0");
   read_string("come at once. we have hit a berg. \0");
-/*
-  s();
-  o();
-  s();
-  pause();
-//  show(char_a);
-//  pause();
-  show(char_m);
-  show(char_o);
-  show(char_r);
-  show(char_s);
-  show(char_e);
-  pause();
-  show(char_c);
-  show(char_o);
-  show(char_d);
-  show(char_e);
-  pause();
-  show(char_f);
-  show(char_t);
-  show(char_w);
-  pause();
-  */
 }
 
 
@@ -153,6 +131,8 @@ char* get_char(char ch) {
     return letters[ch - 'a'];
   } else if (ch >= '0' && ch <= '9') {
     return numbers[ch - '0'];
+  } else if (ch == '.') {
+    return PERIOD;
   } else if (ch == SPACE_CHAR) {
     return SPACE;
   }
@@ -169,14 +149,6 @@ void show(char* letter) {
    }
 }
 
-void o() {
-  show(char_o);
-}
-
-void s() {
-  show(char_s);
-}
-
 void dot() {
   blink(SHORT, SHORT);
 }
@@ -186,11 +158,11 @@ void dash() {
 }
 
 void end_of_character() {
-  delay(LONG);
+  delay(LETTER_SPACE);
 }
 
 void pause() {
-  delay(LONG * 2);
+  delay(WORD_SPACE);
 }
 
 void banner() {
