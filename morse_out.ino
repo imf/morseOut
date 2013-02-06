@@ -1,9 +1,9 @@
 /*
   Morse Out
-  Display some morse output on the built-in LED
+ Display some morse output on the built-in LED
  
-*/
- 
+ */
+
 // Pin 13 has an LED connected on most Arduino boards.
 // give it a name:
 static int LED = 13;
@@ -19,53 +19,98 @@ static char DASH = '-';
 static char SPACE_CHAR = ' ';
 static char EOC = '$';
 static char EOS = '\0';
-static char char_a[4] = {'.','-',EOC,EOS};
-static char char_b[6] = {'-','.','.','.',EOC,EOS};
-static char char_c[6] = {'-','.','-','.',EOC,EOS};
-static char char_d[5] = {'-','.','.',EOC,EOS};
-static char char_e[3] = {'.',EOC,EOS};
-static char char_f[6] = {'.','.','-','.',EOC,EOS};
-static char char_g[5] = {'-','-','.',EOC,EOS};
-static char char_h[6] = {'.','.','.','.',EOC,EOS};
-static char char_i[4] = {'.','.',EOC,EOS};
-static char char_j[6] = {'.','-','-','-',EOC,EOS};
-static char char_k[5] = {'-','.','-',EOC,EOS};
-static char char_l[6] = {'.','-','.','.',EOC,EOS};
-static char char_m[4] = {'-','-',EOC,EOS};
-static char char_n[4] = {'-','.',EOC,EOS};
-static char char_o[5] = {'-','-','-',EOC,EOS};
-static char char_p[6] = {'.','-','-','.',EOC,EOS};
-static char char_q[6] = {'-','-','.','-',EOC,EOS};
-static char char_r[5] = {'.','-','.',EOC,EOS};
-static char char_s[5] = {'.','.','.',EOC,EOS};
-static char char_t[3] = {'-',EOC,EOS};
-static char char_u[5] = {'.','.','-',EOC,EOS};
-static char char_v[6] = {'.','.','.','-',EOC,EOS};
-static char char_w[5] = {'.','-','-',EOC,EOS};
-static char char_x[6] = {'-','.','.','-',EOC,EOS};
-static char char_y[6] = {'-','.','-','-',EOC,EOS};
-static char char_z[6] = {'-','-','.','.',EOC,EOS};
+static char char_a[4] = {
+  '.','-',EOC,EOS};
+static char char_b[6] = {
+  '-','.','.','.',EOC,EOS};
+static char char_c[6] = {
+  '-','.','-','.',EOC,EOS};
+static char char_d[5] = {
+  '-','.','.',EOC,EOS};
+static char char_e[3] = {
+  '.',EOC,EOS};
+static char char_f[6] = {
+  '.','.','-','.',EOC,EOS};
+static char char_g[5] = {
+  '-','-','.',EOC,EOS};
+static char char_h[6] = {
+  '.','.','.','.',EOC,EOS};
+static char char_i[4] = {
+  '.','.',EOC,EOS};
+static char char_j[6] = {
+  '.','-','-','-',EOC,EOS};
+static char char_k[5] = {
+  '-','.','-',EOC,EOS};
+static char char_l[6] = {
+  '.','-','.','.',EOC,EOS};
+static char char_m[4] = {
+  '-','-',EOC,EOS};
+static char char_n[4] = {
+  '-','.',EOC,EOS};
+static char char_o[5] = {
+  '-','-','-',EOC,EOS};
+static char char_p[6] = {
+  '.','-','-','.',EOC,EOS};
+static char char_q[6] = {
+  '-','-','.','-',EOC,EOS};
+static char char_r[5] = {
+  '.','-','.',EOC,EOS};
+static char char_s[5] = {
+  '.','.','.',EOC,EOS};
+static char char_t[3] = {
+  '-',EOC,EOS};
+static char char_u[5] = {
+  '.','.','-',EOC,EOS};
+static char char_v[6] = {
+  '.','.','.','-',EOC,EOS};
+static char char_w[5] = {
+  '.','-','-',EOC,EOS};
+static char char_x[6] = {
+  '-','.','.','-',EOC,EOS};
+static char char_y[6] = {
+  '-','.','-','-',EOC,EOS};
+static char char_z[6] = {
+  '-','-','.','.',EOC,EOS};
 
-static char char_0[7] = {'-','-','-','-','-',EOC,EOS};
-static char char_1[7] = {'.','-','-','-','-',EOC,EOS};
-static char char_2[7] = {'.','.','-','-','-',EOC,EOS};
-static char char_3[7] = {'.','.','.','-','-',EOC,EOS};
-static char char_4[7] = {'.','.','.','.','-',EOC,EOS};
-static char char_5[7] = {'.','-','-','-','-',EOC,EOS};
-static char char_6[7] = {'-','.','.','.','.',EOC,EOS};
-static char char_7[7] = {'-','-','.','.','.',EOC,EOS};
-static char char_8[7] = {'-','-','-','.','.',EOC,EOS};
-static char char_9[7] = {'-','-','-','-','.',EOC,EOS};
+static char char_0[7] = {
+  '-','-','-','-','-',EOC,EOS};
+static char char_1[7] = {
+  '.','-','-','-','-',EOC,EOS};
+static char char_2[7] = {
+  '.','.','-','-','-',EOC,EOS};
+static char char_3[7] = {
+  '.','.','.','-','-',EOC,EOS};
+static char char_4[7] = {
+  '.','.','.','.','-',EOC,EOS};
+static char char_5[7] = {
+  '.','-','-','-','-',EOC,EOS};
+static char char_6[7] = {
+  '-','.','.','.','.',EOC,EOS};
+static char char_7[7] = {
+  '-','-','.','.','.',EOC,EOS};
+static char char_8[7] = {
+  '-','-','-','.','.',EOC,EOS};
+static char char_9[7] = {
+  '-','-','-','-','.',EOC,EOS};
 
-static char SPACE[3]  = {' ',EOC,EOS};
-static char PERIOD[8]  = {'.','-','.','-','.','-',EOC,EOS};
-static char QUESTION_MARK[8] = {'-','-','.','.','-','-',EOC,EOS};
-static char EXCLAMAITION_POINT[7] = {'.','.','-','-','.',EOC,EOS};
-static char COLON[8] = {'-','-','-','.','.','.',EOC,EOS};
-static char SINGLE_QUOTE[8] = {'.','-','-','-','-','.',EOC,EOS};
-static char DOUBLE_QUOTE[8] = {'.','-','.','.','-','.',EOC,EOS};
-static char EQUALS_SIGN[7] = {'-','.','.','.','-',EOC,EOS};
-static char ILLEGAL_CHARACTER[1]  = {EOS};
+static char SPACE[3]  = {
+  ' ',EOC,EOS};
+static char PERIOD[8]  = {
+  '.','-','.','-','.','-',EOC,EOS};
+static char QUESTION_MARK[8] = {
+  '-','-','.','.','-','-',EOC,EOS};
+static char EXCLAMATION_POINT[7] = {
+  '.','.','-','-','.',EOC,EOS};
+static char COLON[8] = {
+  '-','-','-','.','.','.',EOC,EOS};
+static char SINGLE_QUOTE[8] = {
+  '.','-','-','-','-','.',EOC,EOS};
+static char DOUBLE_QUOTE[8] = {
+  '.','-','.','.','-','.',EOC,EOS};
+static char EQUALS_SIGN[7] = {
+  '-','.','.','.','-',EOC,EOS};
+static char ILLEGAL_CHARACTER[1]  = {
+  EOS};
 
 static char* letters[26] = {
   char_a,
@@ -118,7 +163,7 @@ void setup() {
 
 // the loop routine runs over and over again forever:
 void loop() {
-//  fast_blink();
+  //  fast_blink();
   read_string("sos morse code ftw \0");
   read_string("cqd cqd cqd cqd cqd cqd de mgy mgy mgy mgy mgy mgy position 41.44n. 50.24w  \0");
   read_string("come at once. we have hit a berg. \0");
@@ -133,26 +178,34 @@ void read_string(char* input) {
 
 
 char* get_char(char ch) {
-  if (ch >= 'a' && ch <= 'z') {
-    return letters[ch - 'a'];
-  } else if (ch >= '0' && ch <= '9') {
-    return numbers[ch - '0'];
-  } else if (ch == '.') {
-    return PERIOD;
-  } else if (ch == SPACE_CHAR) {
-    return SPACE;
+   if (ch >= 'a' && ch <= 'z') {
+     return letters[ch - 'a'];
+   } else if (ch >= '0' && ch <= '9') {
+     return numbers[ch - '0'];
+   } else  switch (ch) {
+//    case ('a'-'z'):
+//      return letters[ch - 'a'];
+//    case ('0'-'9'):
+//      return numbers[ch - '0'];
+    case '.':
+      return PERIOD;
+    case ' ':
+      return SPACE;
+    case '!':
+      return EXCLAMATION_POINT;
+    default:
+      return ILLEGAL_CHARACTER;
   }
-  else return ILLEGAL_CHARACTER;
 }
 
 
 void show(char* letter) {
-   for (int i = 0; letter[i] != EOS; i++) {
-     if (letter[i] == DOT) dot();
-     else if (letter[i] == DASH) dash();
-     else if (letter[i] == EOC) end_of_character();
-     else if (letter[i] == SPACE_CHAR) pause();
-   }
+  for (int i = 0; letter[i] != EOS; i++) {
+    if (letter[i] == DOT) dot();
+    else if (letter[i] == DASH) dash();
+    else if (letter[i] == EOC) end_of_character();
+    else if (letter[i] == SPACE_CHAR) pause();
+  }
 }
 
 void dot() {
@@ -172,7 +225,7 @@ void pause() {
 }
 
 void banner() {
-    for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < 10; i++) {
     blink(100, 100);
   }
   pause();
@@ -197,3 +250,4 @@ void emit_tone(int duration) { // Emit 1K tone on pin SOUND_OUT
     delayMicroseconds(500);
   }
 }
+
