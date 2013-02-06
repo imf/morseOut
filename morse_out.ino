@@ -8,11 +8,14 @@
 // give it a name:
 static int LED = 13;
 static int SOUND_OUT = 9;
+
 static int SPEED = 75; // in milliseconds
 static int SHORT = SPEED;
 static int LONG = SPEED * 3;
 static int LETTER_SPACE = SPEED * 3;
 static int WORD_SPACE = SPEED * 7;
+
+static int FREQ_1K = 1000;
 
 static char DOT = '.';
 static char DASH = '-';
@@ -117,7 +120,7 @@ void setup() {
 
 // the loop routine runs over and over again forever:
 void loop() {
-  //  fast_blink();
+//  error();
   read_string("sos morse code ftw \0");
   read_string("cqd cqd cqd cqd cqd cqd de mgy mgy mgy mgy mgy mgy position 41.44n. 50.24w  \0");
   read_string("come at once. we have hit a berg. \0");
@@ -141,13 +144,23 @@ char* get_char(char ch) {
       return PERIOD;
     case ' ':
       return SPACE;
+    case '?':
+      return QUESTION_MARK;
     case '!':
       return EXCLAMATION_POINT;
+    case ':':
+      return COLON;
+    case '\'':
+      return SINGLE_QUOTE;
+    case '"':
+      return DOUBLE_QUOTE;
+    case '=':
+      return EQUALS_SIGN;
     default:
+      error();
       return ILLEGAL_CHARACTER;
   }
 }
-
 
 void show(char* letter) {
   for (int i = 0; letter[i] != EOS; i++) {
@@ -181,23 +194,34 @@ void banner() {
   pause();
 }
 
+void error() {
+  for (int i = 0; i < 20; i++) {
+    blink(50, 50, 500);
+  }
+}
+
 void fast_blink() {
   blink(750, 250);               // wait for a second  
 }
 
+  
 void blink(int on, int off) {
+  blink(on, off, FREQ_1K);
+}
+
+void blink(int on, int off, int frequency) {
   digitalWrite(LED, HIGH);
-  emit_tone(on);
+  emit_tone(on, frequency);
   digitalWrite(LED, LOW);
   delay(off);
 }
 
-void emit_tone(int duration) { // Emit 1K tone on pin SOUND_OUT
+void emit_tone(int duration, int frequency) { // Emit 1K tone on pin SOUND_OUT
   for (int i = 0; i < duration; i++) {
     digitalWrite(SOUND_OUT, HIGH);
-    delayMicroseconds(500);
+    delayMicroseconds(frequency / 2);
     digitalWrite(SOUND_OUT, LOW);
-    delayMicroseconds(500);
+    delayMicroseconds(frequency / 2);
   }
 }
 
