@@ -16,6 +16,8 @@ static int LETTER_SPACE = SPEED * 3;
 static int WORD_SPACE = SPEED * 7;
 
 static int FREQ_1K = 1000;
+static int FREQUENCY = FREQ_1K;
+static int ERROR_FREQUENCY = 500;
 
 static char DOT = '.';
 static char DASH = '-';
@@ -196,7 +198,7 @@ void banner() {
 
 void error() {
   for (int i = 0; i < 20; i++) {
-    blink(50, 50, 500);
+    blink(50, 50, ERROR_FREQUENCY);
   }
 }
 
@@ -206,7 +208,7 @@ void fast_blink() {
 
   
 void blink(int on, int off) {
-  blink(on, off, FREQ_1K);
+  blink(on, off, FREQUENCY);
 }
 
 void blink(int on, int off, int frequency) {
