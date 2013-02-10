@@ -51,16 +51,19 @@ static char char_x[6] = "-..-";
 static char char_y[6] = "-.--";
 static char char_z[6] = "--..";
 
-static char char_0[7] = "-----";
-static char char_1[7] = ".----";
-static char char_2[7] = "..---";
-static char char_3[7] = "...--";
-static char char_4[7] = "....-";
-static char char_5[7] = ".----";
-static char char_6[7] = "-....";
-static char char_7[7] = "--...";
-static char char_8[7] = "---..";
-static char char_9[7] = "----.";
+static char* numbers[10] = {
+  "-----",
+  ".----",
+  "..---",
+  "...--",
+  "....-",
+  ".----",
+  "-....",
+  "--...",
+  "---..",
+  "----.",
+};
+
 static char SPACE[3]             = " ";
 static char PERIOD[8]            = ".-.-.-";
 static char QUESTION_MARK[8]     = "--..--";
@@ -98,19 +101,6 @@ static char* letters[26] = {
   char_x,
   char_y,
   char_z,
-};
-
-static char* numbers[10] = {
-  char_0,
-  char_1,
-  char_2,
-  char_3,
-  char_4,
-  char_5,
-  char_6,
-  char_7,
-  char_8,
-  char_9,
 };
 
 // the setup routine runs once when you press reset:
