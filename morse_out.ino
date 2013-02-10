@@ -8,7 +8,7 @@
 const int SOUND_OUT = 9;
 const int LED = 13;
 
-static int SPEED = 75; // in milliseconds. 40ms is about the fastest where the tones are distinct. 50 is very fast. 75 is reasonable. 100 might be good for learning.
+static int SPEED = 60; // in milliseconds. 40ms is about the fastest where the tones are distinct. 50 is very fast. 75 is reasonable. 100 might be good for learning.
 static int SHORT = SPEED;
 static int LONG = SPEED * 3;
 static int LETTER_SPACE = SPEED * 3;
@@ -83,22 +83,22 @@ void setup() {
 }
 
 void loop() {
-  read_string("sos morse code ftw ");
-  read_string("morse code is cool. #");
-  read_string("cqd cqd cqd cqd cqd cqd de mgy mgy mgy mgy mgy mgy position 41.44n. 50.24w  ");
-  read_string("come at once. we have hit a berg. ");
-  read_string("#");
+  readString("sos morse code ftw ");
+  readString("morse code is cool. #");
+  readString("cqd cqd cqd cqd cqd cqd de mgy mgy mgy mgy mgy mgy position 41.44n. 50.24w  ");
+  readString("come at once. we have hit a berg. ");
+  readString("#");
 }
 
 
-void read_string(char* input) {
+void readString(char* input) {
   for (int i = 0; input[i] != EOS; i++) {
-    show(get_char(input[i]));
+    show(getChar(input[i]));
   }
 }
 
 
-char* get_char(char ch) {
+char* getChar(char ch) {
    if (ch >= 'a' && ch <= 'z') {
      return letters[ch - 'a'];
    } else if (ch >= '0' && ch <= '9') {
@@ -130,13 +130,13 @@ void show(char* letter) {
   for (int i = 0; letter[i] != EOS; i++) {
     if (letter[i] == DOT) dot();
     else if (letter[i] == DASH) dash();
-    else if (letter[i] == EOC) end_of_character();
+    else if (letter[i] == EOC) endOfCharacter();
     else if (letter[i] == SPACE_CHAR) {
       pause();
       return;
     }
   }
-  end_of_character();
+  endOfCharacter();
 }
 
 void dot() {
@@ -147,7 +147,7 @@ void dash() {
   blink(LONG,SHORT);
 }
 
-void end_of_character() {
+void endOfCharacter() {
   delay(LETTER_SPACE);
 }
 
@@ -168,23 +168,18 @@ void error() {
   }
 }
 
-void fast_blink() {
-  blink(750, 250);               // wait for a second  
-}
-
-  
 void blink(int on, int off) {
   blink(on, off, FREQUENCY);
 }
 
 void blink(int on, int off, int frequency) {
   digitalWrite(LED, HIGH);
-  emit_tone(on, frequency);
+  emitTone(on, frequency);
   digitalWrite(LED, LOW);
   delay(off);
 }
 
-void emit_tone(int duration, int frequency) { // Emit 1K tone on pin SOUND_OUT
+void emitTone(int duration, int frequency) { // Emit 1K tone on pin SOUND_OUT
   for (int i = 0; i < duration; i++) {
     digitalWrite(SOUND_OUT, HIGH);
     delayMicroseconds(frequency / 2);
