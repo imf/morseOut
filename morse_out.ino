@@ -64,14 +64,14 @@ static char* numbers[10] = {
   "----.",
 };
 
-static char SPACE[3]             = " ";
-static char PERIOD[8]            = ".-.-.-";
-static char QUESTION_MARK[8]     = "--..--";
-static char EXCLAMATION_POINT[7] = "..--.";
-static char COLON[8]             = "---...";
-static char SINGLE_QUOTE[8]      = ".----.";
-static char DOUBLE_QUOTE[8]      = ".-..-.";
-static char EQUALS_SIGN[7]       = "-...-";
+static char* SPACE             = " ";
+static char* PERIOD            = ".-.-.-";
+static char* QUESTION_MARK     = "--..--";
+static char* EXCLAMATION_POINT = "..--.";
+static char* COLON             = "---...";
+static char* SINGLE_QUOTE      = ".----.";
+static char* DOUBLE_QUOTE      = ".-..-.";
+static char* EQUALS_SIGN       = "-...-";
 static char ILLEGAL_CHARACTER[1] = {EOS};
 
 static char* letters[26] = {
