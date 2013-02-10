@@ -4,10 +4,8 @@
  
  */
 
-// Pin 13 has an LED connected on most Arduino boards.
-// give it a name:
-static int LED = 13;
 static int SOUND_OUT = 9;
+static int LED = 13;
 
 static int SPEED = 75; // in milliseconds
 static int SHORT = SPEED;
@@ -24,32 +22,35 @@ static char DASH = '-';
 static char SPACE_CHAR = ' ';
 static char EOC = '$';
 static char EOS = '\0';
-static char char_a[4] = ".-";
-static char char_b[6] = "-...";
-static char char_c[6] = "-.-.";
-static char char_d[5] = "-..";
-static char char_e[3] = ".";
-static char char_f[6] = "..-.";
-static char char_g[5] = "--.";
-static char char_h[6] = "....";
-static char char_i[4] = "..";
-static char char_j[6] = ".---";
-static char char_k[5] = "-.-";
-static char char_l[6] = ".-..";
-static char char_m[4] = "--";
-static char char_n[4] = "-.";
-static char char_o[5] = "---";
-static char char_p[6] = ".--.";
-static char char_q[6] = "--.-";
-static char char_r[5] = ".-.";
-static char char_s[5] = "...";
-static char char_t[3] = "-";
-static char char_u[5] = "..-";
-static char char_v[6] = "...-";
-static char char_w[5] = ".--";
-static char char_x[6] = "-..-";
-static char char_y[6] = "-.--";
-static char char_z[6] = "--..";
+
+static char* letters[26] = {
+  ".-",
+  "-...",
+  "-.-.",
+  "-..",
+  ".",
+  "..-.",
+  "--.",
+  "....",
+  "..",
+  ".---",
+  "-.-",
+  ".-..",
+  "--",
+  "-.",
+  "---",
+  ".--.",
+  "--.-",
+  ".-.",
+  "...",
+  "-",
+  "..-",
+  "...-",
+  ".--",
+  "-..-",
+  "-.--",
+  "--.."
+};
 
 static char* numbers[10] = {
   "-----",
@@ -74,34 +75,6 @@ static char* DOUBLE_QUOTE      = ".-..-.";
 static char* EQUALS_SIGN       = "-...-";
 static char ILLEGAL_CHARACTER[1] = {EOS};
 
-static char* letters[26] = {
-  char_a,
-  char_b,
-  char_c,
-  char_d,
-  char_e,
-  char_f,
-  char_g,
-  char_h,
-  char_i,
-  char_j,
-  char_k,
-  char_l,
-  char_m,
-  char_n,
-  char_o,
-  char_p,
-  char_q,
-  char_r,
-  char_s,
-  char_t,
-  char_u,
-  char_v,
-  char_w,
-  char_x,
-  char_y,
-  char_z,
-};
 
 // the setup routine runs once when you press reset:
 void setup() {                
