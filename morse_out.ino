@@ -1,13 +1,14 @@
 /*
   Morse Out
  Display some morse output on the built-in LED
+ Pin 9 (SOUNT_OUT) provides a line-level (but LOUD) output to emit a 1K tone matching the dots and dashes
  
  */
 
-static int SOUND_OUT = 9;
-static int LED = 13;
+const int SOUND_OUT = 9;
+const int LED = 13;
 
-static int SPEED = 75; // in milliseconds
+static int SPEED = 75; // in milliseconds. 40ms is about the fastest where the tones are distinct. 50 is very fast. 75 is reasonable. 100 might be good for learning.
 static int SHORT = SPEED;
 static int LONG = SPEED * 3;
 static int LETTER_SPACE = SPEED * 3;
@@ -76,20 +77,17 @@ static char* EQUALS_SIGN       = "-...-";
 static char ILLEGAL_CHARACTER[1] = {EOS};
 
 
-// the setup routine runs once when you press reset:
 void setup() {                
-  // initialize the digital pin as an output.
   pinMode(LED, OUTPUT); 
   pinMode(SOUND_OUT, OUTPUT);  
 }
 
-// the loop routine runs over and over again forever:
 void loop() {
-//  error();
   read_string("sos morse code ftw ");
   read_string("morse code is cool. #");
   read_string("cqd cqd cqd cqd cqd cqd de mgy mgy mgy mgy mgy mgy position 41.44n. 50.24w  ");
   read_string("come at once. we have hit a berg. ");
+  read_string("#");
 }
 
 
