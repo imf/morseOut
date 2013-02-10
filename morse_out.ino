@@ -15,7 +15,7 @@ static int LONG = SPEED * 3;
 static int LETTER_SPACE = SPEED * 3;
 static int WORD_SPACE = SPEED * 7;
 
-static int FREQ_1K = 1000;
+const int FREQ_1K = 1000;
 static int FREQUENCY = FREQ_1K;
 static int ERROR_FREQUENCY = 500;
 
