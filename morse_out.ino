@@ -1,12 +1,19 @@
 /*
   Morse Out
  Display some morse output on the built-in LED
- Pin 9 (SOUNT_OUT) provides a line-level (but LOUD) output to emit a 1K tone matching the dots and dashes
+ Pin 2 (SOUNT_OUT) provides a line-level (but LOUD) output to emit a 1K tone matching the dots and dashes
+ 
+ Uses LCD to display the message as well.
  
  */
+ 
+ #include <LiquidCrystal.h>
 
-const int SOUND_OUT = 9;
+
+const int SOUND_OUT = 2;
 const int LED = 13;
+
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12); 
 
 static int SPEED = 60; // in milliseconds. 40ms is about the fastest where the tones are distinct. 50 is very fast. 75 is reasonable. 100 might be good for learning.
 static int SHORT = SPEED;
@@ -80,20 +87,31 @@ static char ILLEGAL_CHARACTER[1] = {EOS};
 void setup() {                
   pinMode(LED, OUTPUT); 
   pinMode(SOUND_OUT, OUTPUT);  
+  lcd.begin(16, 2);
+  lcd.print("MorseOut LCD");
+  delay(3000);
 }
 
 void loop() {
   readString("sos morse code ftw ");
-  readString("morse code is cool. #");
+  readString("morse code is cool. \t");
   readString("cqd cqd cqd cqd cqd cqd de mgy mgy mgy mgy mgy mgy position 41.44n. 50.24w  ");
   readString("come at once. we have hit a berg. ");
-  readString("#");
+  readString("\t");  
+  readString("the quick brown fox jumps over the lazy dogs.");
+  readString("\t");
 }
 
 
 void readString(char* input) {
   for (int i = 0; input[i] != EOS; i++) {
-    show(getChar(input[i]));
+    char* myChar = getChar(input[i]);
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print(myChar);
+    lcd.setCursor(0,1);
+    lcd.print(input[i]);
+    show(myChar);
   }
 }
 
@@ -150,7 +168,7 @@ void dash() {
 void endOfCharacter() {
   delay(LETTER_SPACE);
 }
-
+s
 void pause() {
   delay(WORD_SPACE);
 }
