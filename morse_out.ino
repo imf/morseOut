@@ -7,7 +7,7 @@
  
  */
  
- #include <LiquidCrystal.h>
+#include <LiquidCrystal.h>
 
 
 const int SOUND_OUT = 2;
@@ -15,11 +15,11 @@ const int LED = 13;
 
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12); 
 
-static int SPEED = 60; // in milliseconds. 40ms is about the fastest where the tones are distinct. 50 is very fast. 75 is reasonable. 100 might be good for learning.
-static int SHORT = SPEED;
-static int LONG = SPEED * 3;
-static int LETTER_SPACE = SPEED * 3;
-static int WORD_SPACE = SPEED * 7;
+static int BASE_RATE = 60; // in milliseconds. 40ms is about the fastest where the tones are distinct. 50 is very fast. 75 is reasonable. 100 might be good for learning.
+static int SHORT = BASE_RATE;
+static int LONG = BASE_RATE * 3;
+static int LETTER_SPACE = BASE_RATE * 3;
+static int WORD_SPACE = BASE_RATE * 7;
 
 const int FREQ_1K = 1000;
 static int FREQUENCY = FREQ_1K;
@@ -168,7 +168,7 @@ void dash() {
 void endOfCharacter() {
   delay(LETTER_SPACE);
 }
-s
+
 void pause() {
   delay(WORD_SPACE);
 }
